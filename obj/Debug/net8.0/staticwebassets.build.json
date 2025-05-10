@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "zfnW1/Z9l4CTEJvAD5dCPMsc9r9hUERCg+yqtN02RvA=",
+  "Hash": "w7HlwSq/p/RmU80WdhbZ80z7Ai4iKxm59zOTBuCi4k0=",
   "Source": "CineTurbo",
   "BasePath": "_content/CineTurbo",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

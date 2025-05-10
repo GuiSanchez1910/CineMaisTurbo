@@ -33,13 +33,21 @@ namespace CineTurbo.Controllers
             return Created("Serie criado com sucesso!", serie);
         }
 
-        // GET: api/series
         [HttpGet]
-        public ActionResult<IEnumerable<Serie>> GetTodosSeries()
+        public ActionResult<IEnumerable<Serie>> GetSeries([FromQuery] string? genero)
         {
-            var series = _appDbContext.SeriesDB.ToList();
-            return Ok(series);
+            var query = _appDbContext.SeriesDB.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(genero))
+            {
+                query = query.Where(s => s.Genero.Trim().ToLower() == genero.Trim().ToLower());
+            }
+
+            return Ok(query.ToList());
         }
+
+
+
         
         [HttpGet("{id}")]
         public async Task<ActionResult<Serie>> GetSerie(int id)
