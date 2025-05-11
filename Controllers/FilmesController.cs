@@ -32,12 +32,27 @@ namespace CineTurbo.Controllers
             return Created("Filme criado com sucesso!", filme);
         }
 
-        // GET: api/filmes
+        // // GET: api/filmes
+        // [HttpGet]
+        // public ActionResult<IEnumerable<Filme>> GetTodosFilmes()
+        // {
+        //     var filmes = _appDbContext.FilmesDB.ToList();
+        //     return Ok(filmes);
+        // }
+
         [HttpGet]
-        public ActionResult<IEnumerable<Filme>> GetTodosFilmes()
+        public ActionResult<IEnumerable<Filme>> GetFilmes([FromQuery] string? genero)
         {
-            var filmes = _appDbContext.FilmesDB.ToList();
-            return Ok(filmes);
+            var query = _appDbContext.FilmesDB.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(genero))
+            {
+                query = query.Where(s => s.Genero.Trim().ToLower() == genero.Trim().ToLower());
+
+
+            }
+
+            return Ok(query.ToList());
         }
         
         [HttpGet("{id}")]

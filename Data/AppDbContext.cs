@@ -24,7 +24,7 @@ namespace CineTurbo.Data
                     AvaliacaoImdb = 87,
                     AvaliacaoTomates = 88,
                     Foto = "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/1aadn0aD7h1VKq4yap2uKl7cTSL.jpg",
-                    Genero = "Ficção Científica",
+                    Genero = "FiccaoCientifica",
                     Avaliacao = 5,
                     Duracao = "2h 16min",
                     Lancamento = new DateTime(1999, 3, 31)
@@ -37,7 +37,7 @@ namespace CineTurbo.Data
                     AvaliacaoImdb = 87,
                     AvaliacaoTomates = 88,
                     Foto = "https://www.themoviedb.org/t/p/w1280/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
-                    Genero = "Ficção Científica",
+                    Genero = "FiccaoCientifica",
                     Avaliacao = 5,
                     Duracao = "2h 16min",
                     Lancamento = new DateTime(1999, 3, 31)
@@ -50,7 +50,7 @@ namespace CineTurbo.Data
                     AvaliacaoImdb = 87,
                     AvaliacaoTomates = 88,
                     Foto = "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/4lj1ikfsSmMZNyfdi8R8Tv5tsgb.jpg",
-                    Genero = "Ficção Científica",
+                    Genero = "FiccaoCientifica",
                     Avaliacao = 5,
                     Duracao = "2h 16min",
                     Lancamento = new DateTime(1999, 3, 31)

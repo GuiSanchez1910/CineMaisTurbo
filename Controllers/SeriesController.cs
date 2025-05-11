@@ -45,9 +45,6 @@ namespace CineTurbo.Controllers
 
             return Ok(query.ToList());
         }
-
-
-
         
         [HttpGet("{id}")]
         public async Task<ActionResult<Serie>> GetSerie(int id)

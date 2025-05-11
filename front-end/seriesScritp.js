@@ -39,3 +39,14 @@ $.ajax({
         console.error('Erro ao buscar séries');
     }
 });
+
+
+$.ajax({
+    type: "GET",
+    url: "http://localhost:5018/api/filmes?genero=drama",
+    data: "data",
+    dataType: "dataType",
+    success: function (response) {
+        
+    }
+});
