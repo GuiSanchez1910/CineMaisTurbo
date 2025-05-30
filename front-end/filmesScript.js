@@ -491,3 +491,105 @@ $(document).on('click', '.editarFilme', function () {
     });
 
 });
+
+$(document).ready(function () {
+      setTimeout(() => {
+        const swiper = new Swiper('.swiper', {
+          slidesPerView: 4,
+          spaceBetween: 30,
+          navigation: {
+            nextEl: '.swiper-button-next.filme',
+            prevEl: '.swiper-button-prev.filme',
+          },
+          loop: true,
+        });
+      }, 100);
+
+
+      setTimeout(() => {
+        const swiper = new Swiper('.destaque', {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          speed: 1000,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          },
+          navigation: {
+            nextEl: '.swiper-button-next.destaque',
+            prevEl: '.swiper-button-prev.destaque',
+          },
+          on: {
+            slideChangeTransitionStart: function () {
+              this.slides.forEach(slide => {
+                const iframe = slide.querySelector('iframe');
+                if (iframe && iframe.src.includes('youtube.com')) {
+                  iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
+              });
+            }
+          }
+
+        });
+      }, 100); 
+    });
+
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = document.querySelector('.nav-menu').offsetWidth;
+      canvas.height = document.querySelector('.nav-menu').offsetHeight;
+    }
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      generateStars();
+    });
+
+    function generateStars() {
+      stars = [];
+      for (let i = 0; i < 100; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          alpha: Math.random(),
+          delta: Math.random() * 0.02
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+        star.alpha += star.delta;
+        if (star.alpha <= 0 || star.alpha >= 1) star.delta *= -1;
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    resizeCanvas();
+    generateStars();
+    animateStars();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+      observer.observe(element);
+    });

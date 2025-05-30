@@ -1,45 +1,78 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  body {
-    background: linear-gradient(135deg, #1e1f26, #2c2f38);
-    color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* header {
-    background-color: black;
-    padding: 0 40px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  } */
-  
-  .nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 44px;
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .menu-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    font-size:large;
-  }
-  
-  .menu-links a {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1e1f26, #2c2f38);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  padding: 44px;
+  height: 89px;
+}
+
+.nav-menu.scrolled {
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.nav-menu * {
+  position: relative;
+  z-index: 1;
+}
+
+iframe {
+  border-radius: 10px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.menu-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: large;
+}
+
+.menu-links a {
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -49,49 +82,43 @@
   color: #F0B930;
 }
 
-  
-  .image-grid {
-    padding: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    justify-content: center;
-  }
-  
-  .image-grid img {
-    width: 300px;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .logo {
-    transition: none !important;
-    border-radius: 0px;
-  }
 
-  img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-  }
-  
-  /* #filmes-container img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
-    cursor: pointer;
-  } */
+.image-grid {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
 
-  img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
-    cursor: pointer;
-  }
+.image-grid img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
 
-  .logo{
-    transform: none !important;
-    box-shadow: none; 
-    cursor: pointer;
-  }
-  
+.logo {
+  transition: none !important;
+  border-radius: 0px;
+}
+
+img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+
+img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.logo {
+  transform: none !important;
+  box-shadow: none;
+  cursor: pointer;
+}
+
 /* Cadastro */
 
 .cadastro-container {
@@ -194,6 +221,51 @@ select {
   min-height: 1.2em;
 }
 
-#duracao{
+#duracao {
   background-color: darkgray;
 }
+
+/* CARROSSEIS */
+
+.swiper-slide {
+  /* width: 300px !important; */
+  /* height: 450px; */
+  background-color: #1f2a38;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.swiper-slide.destaque {
+  height: 450px;
+  background-color: #1f2a38;
+  border-radius: 8px;
+  /* overflow: hidden; */
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.swiper {
+  padding: 0 40px;
+}
+
+/* SHOW DE FILMES / SÉRIES */
+.fundo-filme {
+    background-image: url('../images/batmanPoster.webp');
+    background-size: cover;
+    background-position: center;
+    width: 1200px;
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.85);
+    background-blend-mode: darken;
+    margin-top: 50px;
+    background-position: center 10%;
+  }
