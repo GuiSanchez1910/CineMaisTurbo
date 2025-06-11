@@ -37,6 +37,12 @@ O sistema permite realizar o cadastro, listagem, edição, exclusão de filmes e
 
 ---
 
+## 💻 Acesso ao MVP
+
+- https://nicolasrapp05.github.io/CineMaisTurboDeploy/front-end/html/home.html
+
+---
+
 ## 🚀 Como Executar o Projeto
 
 ### Pré-requisitos
